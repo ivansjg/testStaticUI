@@ -1,0 +1,20 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+error user.name: #{error 'user.name'/}<br/>
+
+Errors:<br/>
+#{ifErrors}
+  #{errors}
+    <li>${error}</li>
+  #{/errors}
+#{/ifErrors}
+<br/><br/>
+flash.error: ${flash.error}
+flash.success: ${flash.success}
+
+<ul>
+#{list items:nationalities, as:'nationality'}
+    <li>${nationality}</li>
+#{/list}
+</ul>
