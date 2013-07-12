@@ -28,7 +28,10 @@ public class TestStaticUIController extends Controller {
         ITestStaticUIDataProvider dataProvider = null;
 
         try {
-            String classToLoad = "staticUITest.staticUIData." + toCamelCase(controller) + toCamelCase(action) + "TestStaticUIDataProviderImp";
+            String classToLoad = "staticUITest.staticUIData." + controller +
+                                  Character.toUpperCase(action.charAt(0)) + action.substring(1)
+                                  + "TestStaticUIDataProviderImp";
+
             Class<?> clazz = Application.class.getClassLoader().loadClass(classToLoad);
             dataProvider = (ITestStaticUIDataProvider) clazz.newInstance();
         } catch (ClassNotFoundException e) {
